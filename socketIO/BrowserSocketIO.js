@@ -1,6 +1,6 @@
-var socket = io("ws://localhost:8080");
+//var socket = io("ws://localhost:8080");
 //var port = process.env.PORT || 8081;
-//var socket = io("ws://scribbletime.herokuapp.com:8081");
+var socket = io("ws://scribbletime.herokuapp.com");
 var onListingPlayers = false;
 var Pname;
 var Proom;
