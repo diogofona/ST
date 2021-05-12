@@ -104,18 +104,18 @@ function gamestart() {
   document.querySelector(".listPlayersOnRoom").style.display = "none";
   document.querySelector(".createdRoom").style.display = "none";
 
-  this.maxTime = 15;
-  setTimeout(AddCanvas, this.maxTime*1000);
+  maxTime = 60;
+  setTimeout(AddCanvas, maxTime*1000);
   requestWord();
 }
 
 setInterval(function countDown() {
-  if (this.maxTime >= 0) {
-    document.querySelector(".timer").innerText = this.maxTime;
-    this.maxTime--;
-  } else if(this.canvasHidden == true) {
+  if (maxTime >= 0) {
+    document.querySelector(".timer").innerText = maxTime;
+    maxTime--;
+  } else if(canvasHidden == true) {
 	//document.querySelector(".canvas-holder").style.display = "none";
-	this.canvasHidden = true;
+	canvasHidden = true;
   }
 }, 1000);
 
@@ -134,14 +134,14 @@ socket.on("returnWordRequest", function (data) {
 	console.log("word recived ->" + data);
 		if(data != "noneForHost" && wordRequested == null){
 			console.log("inside reciver word ->" + data);
-			this.wordRequested = data;
+			wordRequested = data;
 			document.querySelector(".canvas-holder").style.display = "flex";
-			document.querySelector(".word-toDraw").innerHTML = this.wordRequested;
-			this.canvasHidden = false;
+			document.querySelector(".word-toDraw").innerHTML = wordRequested;
+			canvasHidden = false;
 		} else if(data == "noneForHost"){
 			document.querySelector(".player-wait-draw").style.display = "flex";
 			document.querySelector(".listPlayersOnRoom2").style.display = "flex";
-			this.wordRequested = data;
+			wordRequested = data;
 		}
 });
 
@@ -168,7 +168,7 @@ function saveCanvas(){
 		console.log(PProom);
 		originalURL = document.getElementsByTagName("canvas")[1].toDataURL("image/png");
 		Sonce = true;
-		this.once = true;
+		once = true;
 		delay = 0;
 		if(document.getElementsByTagName("canvas")[1] != null){
 			console.log("WAIT");
