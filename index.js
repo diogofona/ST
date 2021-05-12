@@ -2,7 +2,7 @@ var express = require("express");
 var cors = require('cors');
 var app = express();
 app.use(cors());
-//var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8080;
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 var ManageSocketIO = require("./socketIO/ManageSocketIO");
@@ -20,6 +20,6 @@ app.get("/", (req, res) => {
 var manageSocket = new ManageSocketIO(io);
 
 //console.log(port);
-server.listen(8080, () => {
+server.listen(port, () => {
   console.log("listening *: 8080");
 });
